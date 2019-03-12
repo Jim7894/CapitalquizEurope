@@ -1,5 +1,6 @@
 package com.example.jimjohansson.capitalquizeurope;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,23 +14,33 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
+    public static String POINTS_KEY = "play_points";
     private TextView questionView;
     private Button b1;
     private Button b2;
     private Button b3;
+    private TextView pointsview;
 
-
+    private int points = 0;
     List<String> answersOnButtons = new ArrayList<>();
     //List<String> countries  = new ArrayList(Arrays.asList(getString(R.string.france), getString(R.string.norway), getString(R.string.sweden), getString(R.string.russia), getString(R.string.spain), getString(R.string.germany)));
     private List<String> answers;
     private List<String> countries;
+
+    private List<Question> questions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        pointsview = findViewById(R.id.pointsview);
+
         questionView = findViewById(R.id.country);
+
+
+
+
         countries = new ArrayList(Arrays.asList(getString(R.string.france), getString(R.string.norway), getString(R.string.sweden), getString(R.string.russia), getString(R.string.spain), getString(R.string.germany)));
 
         answers = new ArrayList(Arrays.asList(getString(R.string.paris), getString(R.string.oslo), getString(R.string.stockholm), getString(R.string.moscow), getString(R.string.madrid), getString(R.string.berlin)));
@@ -44,35 +55,60 @@ public class GameActivity extends AppCompatActivity {
 
     private void fillScreen() {
 
-        Random randomGenerator = new Random();
+        if (2 < answers.size()) {
+            pointsview.setText(String.valueOf(points));
 
-        final int rightAnswerIndex = randomGenerator.nextInt(countries.size());
+            Random randomGenerator = new Random();
 
-        questionView.setText(countries.get(rightAnswerIndex));
+            final int rightAnswerIndex = randomGenerator.nextInt(countries.size());
 
-        ArrayList<Button> buttons = new ArrayList<>();
+            questionView.setText(countries.get(rightAnswerIndex));
 
-        buttons.add(b1);
-        buttons.add(b2);
-        buttons.add(b3);
+            ArrayList<Button> buttons = new ArrayList<>();
 
-        int rightButtonIndex = randomGenerator.nextInt(buttons.size());
+            buttons.add(b1);
+            buttons.add(b2);
+            buttons.add(b3);
 
-        final Button rightButton = buttons.get(rightButtonIndex);
-        buttons.remove(rightButton);
-        rightButton.setText(answers.get(rightAnswerIndex));
-        answersOnButtons.add(answers.get(rightAnswerIndex));
+            int rightButtonIndex = randomGenerator.nextInt(buttons.size());
+
+            final Button rightButton = buttons.get(rightButtonIndex);
+            buttons.remove(rightButton);
+            rightButton.setText(answers.get(rightAnswerIndex));
+            answersOnButtons.add(answers.get(rightAnswerIndex));
+
+        for (Button button : buttons) {
+            int wrongAnswerIndex;
+            // loop till we get wrong answer
+            do {
+                wrongAnswerIndex = randomGenerator.nextInt(answers.size());
+            } while (answersOnButtons.contains(answers.get(wrongAnswerIndex)));
+
+            button.setText(answers.get(wrongAnswerIndex));
+            answersOnButtons.add(answers.get(wrongAnswerIndex));
 
 
-
-
-        //hade b1 innan
-            b1.setOnClickListener(
+            button.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
 
+                            fillScreen();
 
+                        }
+                    }
+
+
+            );
+
+        }
+
+        rightButton.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            points++;
                             fillScreen();
 
 
@@ -80,9 +116,23 @@ public class GameActivity extends AppCompatActivity {
                     }
             );
 
+        countries.remove(rightAnswerIndex);
+        answers.remove(rightAnswerIndex);
+        answersOnButtons.clear();
 
         }
 
+       else {
 
+            Intent intent = new Intent(this, ResultActivity.class);
+            intent.putExtra(POINTS_KEY, points);
+            startActivity(intent);
+            finish();
+        }
 
     }
+
+}
+
+
+

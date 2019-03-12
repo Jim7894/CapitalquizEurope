@@ -15,4 +15,6 @@
     <string name="spain">Spain?</string>
     <string name="russia">Russia?</string>
 
+    <string name="result_headline">"You got "</string>
+
 </resources>
