@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_red_dark"
     tools:context=".ResultActivity">
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="116dp"
-        android:text="Button" />
+        android:layout_marginBottom="88dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Play again?" />
 
     <TextView
         android:id="@+id/resultview"
@@ -22,5 +24,29 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="133dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="219dp"
+        android:hint="Enter your name"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/publish"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edittext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-219dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="add to firebase" />
+
+
 </RelativeLayout>

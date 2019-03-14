@@ -8,12 +8,26 @@
     <string name="madrid">Madrid</string>
     <string name="moscow">Moscow</string>
 
+    <string name="helsinki">Helsinki</string>
+    <string name="rome">Rome</string>
+    <string name="london">London</string>
+    <string name="budapest">Budapest</string>
+    <string name="athens">Athens</string>
+    <string name="prag">Prag</string>
+
     <string name="france">France?</string>
     <string name="sweden">Sweden?</string>
     <string name="norway">Norway?</string>
     <string name="germany">Germany?</string>
     <string name="spain">Spain?</string>
     <string name="russia">Russia?</string>
+
+    <string name="finland">Finland?</string>
+    <string name="italy">Italy?</string>
+    <string name="great_britain">Great Britain?</string>
+    <string name="hungary">Hungary?</string>
+    <string name="greece">Greece?</string>
+    <string name="czech_republic">Czech Republic?</string>
 
     <string name="result_headline">"You got "</string>
 

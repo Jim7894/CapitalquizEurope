@@ -27,7 +27,7 @@ public class GameActivity extends AppCompatActivity {
     private List<String> answers;
     private List<String> countries;
 
-    private List<Question> questions;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,9 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-        countries = new ArrayList(Arrays.asList(getString(R.string.france), getString(R.string.norway), getString(R.string.sweden), getString(R.string.russia), getString(R.string.spain), getString(R.string.germany)));
+        countries = new ArrayList(Arrays.asList(getString(R.string.france), getString(R.string.norway), getString(R.string.sweden), getString(R.string.russia), getString(R.string.spain), getString(R.string.germany), getString(R.string.finland), getString(R.string.great_britain), getString(R.string.czech_republic), getString(R.string.greece), getString(R.string.italy), getString(R.string.hungary)));
 
-        answers = new ArrayList(Arrays.asList(getString(R.string.paris), getString(R.string.oslo), getString(R.string.stockholm), getString(R.string.moscow), getString(R.string.madrid), getString(R.string.berlin)));
+        answers = new ArrayList(Arrays.asList(getString(R.string.paris), getString(R.string.oslo), getString(R.string.stockholm), getString(R.string.moscow), getString(R.string.madrid), getString(R.string.berlin), getString(R.string.helsinki), getString(R.string.london), getString(R.string.prag), getString(R.string.athens), getString(R.string.rome), getString(R.string.budapest)));
 
 
         b1 = (Button) findViewById(R.id.button2);
