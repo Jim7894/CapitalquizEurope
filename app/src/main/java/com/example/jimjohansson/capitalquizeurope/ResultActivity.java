@@ -1,6 +1,7 @@
 package com.example.jimjohansson.capitalquizeurope;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.prefs.Preferences;
+
 public class ResultActivity extends AppCompatActivity {
 
 
@@ -19,6 +22,10 @@ public class ResultActivity extends AppCompatActivity {
     private TextView pointview;
     private EditText childEditText;
     private Button publishbutton;
+    private TextView tv_score;
+    int lastscore;
+
+    int best1;
 
 
 
@@ -90,5 +97,17 @@ public class ResultActivity extends AppCompatActivity {
 
 
 }
+    /*public void HightScore() {
+
+        tv_score = (TextView) findViewById(R.id.tv_score);
+
+
+        SharedPreferences preferences = getSharedPreferences("PREFS",0);
+        lastscore = preferences.getInt("lastscore",0);
+        best1 = preferences.getInt("best1",0);
+
+        tv_score.setText("Last score: " + lastscore + "\n" + "BEST1:" + best1 );
+
+    }*/
 
     }
